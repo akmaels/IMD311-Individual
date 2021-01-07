@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Page</title>
+
+<p style="font-size:80px; color: orange; text-align: center;">😆    LETS KNOW ABOUT ME!      😆</p>
+<p style="font-size:45px; color: orange; text-align: left; font-style: italic;">By Muhamad Akmal Rizal Bin Romli 🙋🏻‍♂️</p>
+
+
+<style>
+*{
+    
+    background-color: rgb(70, 46, 54);
+}
+ul {
+  list-style-type: none;
+  text-transform: uppercase;
+  font-size: 2rem;
+  overflow: hidden;
+  background-color: orange;
+  font-weight: bold;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  background-color: orange;
+  
+
+}
+
+li a:hover:not(.active) {
+  background-color: white;
+}
+
+.active {
+  background-color:rgb(112, 60, 0);
+  color: white;
+}
+
+.active:hover{
+  background-color:red ;
+}
+</style>
+</head>
+
+<!--Menu Section-->
+<body>
+  <ul>
+  <li><a href="home.html">Home</a></li>
+  <li><a href="biodata.html">BIODATA</a></li>
+  <li><a href="experience.html">EXPERIENCE</a></li>
+  <li><a href="education.html">EDUCATION</a></li>
+  <li><a href="family.html">FAMILY</a></li>
+  <li><a href="gallery.html">GALLERY</a></li>
+  <li style="float:right"><a class="active" href="contact.html">CONTACT</a></li>
+  </ul>
+</body>
+</html>
+
+<!--Clocks-->
+
+
+<canvas id="canvas" width="400" height="400"
+style=" background-color:rgb(70, 46, 54)">
+</canvas>
+<style>
+  canvas{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
+
+<script>
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var radius = canvas.height / 2;
+ctx.translate(radius, radius);
+radius = radius * 0.90
+setInterval(drawClock, 1000);
+
+function drawClock() {
+  drawFace(ctx, radius);
+  drawNumbers(ctx, radius);
+  drawTime(ctx, radius);
+}
+
+function drawFace(ctx, radius) {
+  var grad;
+  ctx.beginPath();
+  ctx.arc(0, 0, radius, 0, 2*Math.PI);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+  grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+  grad.addColorStop(0, '#333');
+  grad.addColorStop(0.5, 'white');
+  grad.addColorStop(1, '#333');
+  ctx.strokeStyle = grad;
+  ctx.lineWidth = radius*0.1;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+  ctx.fillStyle = '#333';
+  ctx.fill();
+}
+
+function drawNumbers(ctx, radius) {
+  var ang;
+  var num;
+  ctx.font = radius*0.15 + "px arial";
+  ctx.textBaseline="middle";
+  ctx.textAlign="center";
+  for(num = 1; num < 13; num++){
+    ang = num * Math.PI / 6;
+    ctx.rotate(ang);
+    ctx.translate(0, -radius*0.85);
+    ctx.rotate(-ang);
+    ctx.fillText(num.toString(), 0, 0);
+    ctx.rotate(ang);
+    ctx.translate(0, radius*0.85);
+    ctx.rotate(-ang);
+  }
+}
+
+function drawTime(ctx, radius){
+    var now = new Date();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    //hour
+    hour=hour%12;
+    hour=(hour*Math.PI/6)+
+    (minute*Math.PI/(6*60))+
+    (second*Math.PI/(360*60));
+    drawHand(ctx, hour, radius*0.5, radius*0.07);
+    //minute
+    minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+    drawHand(ctx, minute, radius*0.8, radius*0.07);
+    // second
+    second=(second*Math.PI/30);
+    drawHand(ctx, second, radius*0.9, radius*0.02);
+}
+
+function drawHand(ctx, pos, length, width) {
+    ctx.beginPath();
+    ctx.lineWidth = width;
+    ctx.lineCap = "round";
+    ctx.moveTo(0,0);
+    ctx.rotate(pos);
+    ctx.lineTo(0, -length);
+    ctx.stroke();
+    ctx.rotate(-pos);
+}
+</script>
+
+<!--Table-->
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 5px solid orange;
+}
+
+th {
+    text-align: left;
+  padding: 16px;
+  color:black;
+  font-size: 40px;
+  background-color: greenyellow;
+}
+td {
+  text-align: left;
+  padding: 16px;
+  color:black;
+  font-size: 40px;
+  background-color: skyblue;
+}
+
+
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+</style>
+</head>
+<body>
+
+    <p  style="font-size:80px; color: white; text-align: center;">My Contact 📞</p>
+
+<table>
+  <tr>
+    <th>CONTACT MEDIUM</th>
+    <th>LINK</th>
+    
+  </tr>
+  <tr>
+    <td>Whatsapp 📲 </td>
+    <td><a style="background-color:skyblue; color: black;" href="https://wa.me/0194957944">https://wa.me/0194957944</a></p></td>
+
+  </tr>
+  <tr>
+    <td>E-Mail 📧 </td>
+    <td><a style="background-color: skyblue; color: #000;" href="akmaels28@gmail.com">akmaels28@gmail.com</a></p></td>
+   
+  </tr>
+  <tr>
+    <td>Facebook 📎 </td>
+    <td><a style="background-color: skyblue; color: black;" href="https://www.facebook.com/akmal.rizal.712161">https://www.facebook.com/akmal.rizal.712161</a></p></td>
+    
+  </tr>
+</table>
+
+
+
+<script src="app.js"></script>
